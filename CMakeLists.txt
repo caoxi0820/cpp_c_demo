@@ -5,9 +5,9 @@ set(CMAKE_C_STANDARD 11)
 set(CMAKE_CXX_STANDARD 17)
 
 # 遍历所有子目录，每个demo是独立的子项目
-file(GLOB demo_dirs RELATIVE ${CMAKE_SOURCE_DIR} demos/*)
-foreach(dir ${demo_dirs})
-    if(EXISTS "${CMAKE_SOURCE_DIR}/${dir}/CMakeLists.txt")
-        add_subdirectory(${dir})
-    endif()
+# 递归查找所有包含 CMakeLists.txt 的子目录
+file(GLOB_RECURSE cmake_files RELATIVE ${CMAKE_SOURCE_DIR} demos/*/CMakeLists.txt)
+foreach(cmake_file ${cmake_files})
+    get_filename_component(dir ${cmake_file} DIRECTORY)
+    add_subdirectory(${dir})
 endforeach()

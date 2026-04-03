@@ -32,7 +32,7 @@ void run_engine(event_callback_t on_event)
     on_event("ENGINE_STOPPED");
 }
 
-/* 用户提供的回调实现 */
+/* [CALLBACK] 用户提供的回调实现 —— 传给 run_engine() 作为回调 */
 void my_event_handler(const char *event_name)
 {
     printf("  -> [Handler] 收到事件: %s\n", event_name);
@@ -57,6 +57,7 @@ typedef struct {
     int call_count;
 } download_context_t;
 
+/* [CALLBACK] 带用户数据的回调实现 —— 传给 download_file() 作为回调 */
 void my_progress_handler(int percent, void *user_data)
 {
     download_context_t *ctx = (download_context_t *)user_data;
@@ -67,11 +68,13 @@ void my_progress_handler(int percent, void *user_data)
 
 /* ========== 场景 3：qsort 回调 - 标准库经典用法 ========== */
 
+/* [CALLBACK] 升序比较 —— 传给 qsort() 作为回调 */
 int compare_int_asc(const void *a, const void *b)
 {
     return (*(const int *)a) - (*(const int *)b);
 }
 
+/* [CALLBACK] 降序比较 —— 传给 qsort() 作为回调 */
 int compare_int_desc(const void *a, const void *b)
 {
     return (*(const int *)b) - (*(const int *)a);

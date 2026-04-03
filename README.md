@@ -19,5 +19,5 @@ cmake --build build --config Release
 
 | 目录 | 说明 |
 |------|------|
-| `demos/01_callback_c` | C 语言回调函数 |
-| `demos/01_callback_cpp` | C++ 回调函数（函数指针、std::function、lambda、仿函数） |
+| `demos/01_callback/c` | C 语言回调函数 |
+| `demos/01_callback/cpp` | C++ 回调函数（函数指针、std::function、lambda、仿函数） |

@@ -6,6 +6,8 @@
 2. 带 `void*` 用户数据的回调 - 传递上下文
 3. `qsort` 回调 - 标准库经典用法
 
+代码中所有回调函数都用 `[CALLBACK]` 注释标记，方便快速定位。
+
 ## 编译
 
 使用项目根目录 CMake（编译所有 demo）：
@@ -14,7 +16,7 @@
 # 在项目根目录执行
 cmake -B build -S .
 cmake --build build
-./build/demos/01_callback_c/callback_c
+./build/demos/01_callback/c/callback_c
 ```
 
 直接使用 gcc：

@@ -25,6 +25,7 @@ void run_engine(EventCallback on_event)
     on_event("ENGINE_STOPPED");
 }
 
+/* [CALLBACK] 函数指针回调 —— 传给 run_engine() */
 void my_handler(const std::string &event)
 {
     std::cout << "  -> [函数指针] 事件: " << event << "\n";
@@ -42,7 +43,7 @@ void download(const std::string &url, ProgressFn on_progress)
     }
 }
 
-/* 普通函数也能传给 std::function */
+/* [CALLBACK] 普通函数也能传给 std::function */
 void print_progress(int percent)
 {
     std::cout << "  -> [std::function] 进度: " << percent << "%\n";
@@ -60,6 +61,7 @@ void for_each_item(const std::vector<int> &items,
 
 /* ========== 方式 4：仿函数 (Functor) ========== */
 
+/* [CALLBACK] 仿函数 —— 重载 operator() 使对象可被当作回调调用 */
 struct Comparator {
     bool ascending;
 
