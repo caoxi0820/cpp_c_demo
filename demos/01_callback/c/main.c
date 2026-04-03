@@ -68,6 +68,14 @@ void my_progress_handler(int percent, void *user_data)
 
 /* ========== 场景 3：qsort 回调 - 标准库经典用法 ========== */
 
+/* 回调的返回值直接决定了调用方的行为。qsort 每次比较两个元素时都调用你的回调
+ * 根据你返回的正/负/零来决定元素的排列顺序。换一个回调函数，排序结果就完全不同
+ * 回调在这里不是"旁观者"，而是"决策者"。
+ * 回调是双向的，调用方依赖你的返回值来做决策（int）
+ * 这个思路在 C++ 里演变成了 std::sort + 仿函数/lambda
+ * 在更高层的设计模式里就是策略模式（Strategy Pattern）
+ */
+
 /* [CALLBACK] 升序比较 —— 传给 qsort() 作为回调 */
 int compare_int_asc(const void *a, const void *b)
 {
